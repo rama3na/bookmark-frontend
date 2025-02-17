@@ -18,16 +18,21 @@ function UserList() {
   }, []);
 
   const fetchBookmarks = () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.log("Token is missing!");
+      return;
+    }
+
     axios.get(`${API_BASE_URL}/user-api/get-bookmarks`, {
-        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+        headers: { Authorization: `Bearer ${token}` }
     })
     .then(response => {
         setBookmarks(response.data.payload);
         setFilteredBookmarks(response.data.payload);
     })
     .catch(err => console.log("Error fetching bookmarks:", err));
-};
-
+  };
 
   // Delete bookmark
   const deleteBookmark = (id) => {
@@ -36,7 +41,7 @@ function UserList() {
       console.log("Token is missing!");
       return;
     }
-  
+
     axios.delete(`${API_BASE_URL}/user-api/delete-bookmark/${id}`, {
       headers: {
         Authorization: `Bearer ${token}`  // Add token here
@@ -47,9 +52,11 @@ function UserList() {
       setBookmarks(updatedBookmarks);
       setFilteredBookmarks(updatedBookmarks);
     })
-    .catch(err => console.log("Error deleting bookmark:", err));
+    .catch(err => {
+      console.log("Error deleting bookmark:", err);
+      alert("Error: " + err.response?.data?.message || err.message);
+    });
   };
-  
 
   // Open modal for editing
   const openModal = (bookmark) => {
@@ -73,7 +80,7 @@ function UserList() {
     })
     .catch(err => console.log("Error updating bookmark:", err));
   };
-  
+
   // Handle Search
   useEffect(() => {
     let filtered = bookmarks.filter(bookmark =>
