@@ -28,36 +28,34 @@ function UserList() {
     .catch(err => console.log("Error fetching bookmarks:", err));
 };
 
-
   // Delete bookmark
-  const deleteBookmark = (id) => {
-    axios.delete(`${API_BASE_URL}/user-api/delete-bookmark/${id}`)
-      .then(() => {
-        let updatedBookmarks = bookmarks.filter(bookmark => bookmark._id !== id);
-        setBookmarks(updatedBookmarks);
-        setFilteredBookmarks(updatedBookmarks);
-      })
-      .catch(err => console.log("Error deleting bookmark:", err));
-  };
+const deleteBookmark = (id) => {
+  axios.delete(`${API_BASE_URL}/user-api/delete-bookmark/${id}`, {
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+  })
+  .then(() => {
+    let updatedBookmarks = bookmarks.filter(bookmark => bookmark._id !== id);
+    setBookmarks(updatedBookmarks);
+    setFilteredBookmarks(updatedBookmarks);
+  })
+  .catch(err => console.log("Error deleting bookmark:", err));
+};
 
-  // Open modal for editing
-  const openModal = (bookmark) => {
-    setCurrentBookmark({ _id: bookmark._id, title: bookmark.title, content: bookmark.content });
-    setShowModal(true);
-  };
+// Update bookmark
+const updateBookmark = () => {
+  axios.put(`${API_BASE_URL}/user-api/update-bookmark/${currentBookmark._id}`, {
+    title: currentBookmark.title,
+    content: currentBookmark.content
+  }, {
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+  })
+  .then(() => {
+    fetchBookmarks();
+    setShowModal(false);
+  })
+  .catch(err => console.log("Error updating bookmark:", err));
+};
 
-  // Update bookmark
-  const updateBookmark = () => {
-    axios.put(`${API_BASE_URL}/user-api/update-bookmark/${currentBookmark._id}`, {
-      title: currentBookmark.title,
-      content: currentBookmark.content
-    })
-    .then(() => {
-      fetchBookmarks();
-      setShowModal(false);
-    })
-    .catch(err => console.log("Error updating bookmark:", err));
-  };
 
   // Handle Search
   useEffect(() => {
