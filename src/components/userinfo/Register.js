@@ -12,7 +12,7 @@ function Register() {
 
   let addNewUser = async (newUser) => {
     setLoading(true);
-    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth-api/register`, newUser)
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth-api/register`, newUser)
       .then(response => {
         if (response.status === 200 && response.data.message === "User registered successfully") {
           navigate('/login');

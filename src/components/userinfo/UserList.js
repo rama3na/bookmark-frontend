@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import '../allcss/UserList.css';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || 'http://localhost:3500';
+const API_BASE_URL = process.env.REACT_APP_BACKEND_URL || 'http://localhost:3500';
 
 function UserList() {
   let [bookmarks, setBookmarks] = useState([]);

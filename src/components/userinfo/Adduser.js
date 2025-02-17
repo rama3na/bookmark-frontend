@@ -9,7 +9,7 @@ function AddUser() {
   let navigate = useNavigate();
 
   // ✅ Use live backend URL (Replace with your live API URL)
-  const BASE_URL = process.env.NEXT_PUBLIC_BACKEND_URL || "http://localhost:3500";
+  const BASE_URL = process.env.REACT_APP_BACKEND_URL || "http://localhost:3500";
 
   let newUser = async (userdata) => {
       try {

@@ -14,7 +14,7 @@ function UserLoginStore({ children }) {
 
     if (token && userData) {
       // Verify token with backend
-      axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth-api/verify-token`, {
+      axios.get(`${process.env.REACT_APP_BACKEND_URL}/auth-api/verify-token`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then(() => {
