@@ -29,7 +29,7 @@ function UserLoginStore({ children }) {
 
   // Function to handle user login
   const loginUser = (userCredObj) => {
-    axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/auth-api/login`, userCredObj)
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth-api/login`, userCredObj)
       .then((response) => {
         if (response.data.message === 'Success') {
           localStorage.setItem("token", response.data.token);
