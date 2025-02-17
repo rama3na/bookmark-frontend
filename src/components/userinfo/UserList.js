@@ -31,14 +31,25 @@ function UserList() {
 
   // Delete bookmark
   const deleteBookmark = (id) => {
-    axios.delete(`${API_BASE_URL}/user-api/delete-bookmark/${id}`)
-      .then(() => {
-        let updatedBookmarks = bookmarks.filter(bookmark => bookmark._id !== id);
-        setBookmarks(updatedBookmarks);
-        setFilteredBookmarks(updatedBookmarks);
-      })
-      .catch(err => console.log("Error deleting bookmark:", err));
+    const token = localStorage.getItem("token");
+    if (!token) {
+      console.log("Token is missing!");
+      return;
+    }
+  
+    axios.delete(`${API_BASE_URL}/user-api/delete-bookmark/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`  // Add token here
+      }
+    })
+    .then(() => {
+      let updatedBookmarks = bookmarks.filter(bookmark => bookmark._id !== id);
+      setBookmarks(updatedBookmarks);
+      setFilteredBookmarks(updatedBookmarks);
+    })
+    .catch(err => console.log("Error deleting bookmark:", err));
   };
+  
 
   // Open modal for editing
   const openModal = (bookmark) => {
