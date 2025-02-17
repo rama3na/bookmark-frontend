@@ -1,4 +1,4 @@
-import React, { useState } from 'react'; 
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -12,6 +12,7 @@ function Register() {
 
   let addNewUser = async (newUser) => {
     setLoading(true);
+    console.log("Sending user data:", newUser); // Debugging: check if data is correct
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth-api/register`, newUser)
       .then(response => {
         if (response.status === 200 && response.data.message === "User registered successfully") {
@@ -21,6 +22,7 @@ function Register() {
         }
       })
       .catch((err) => {
+        console.error("Registration error:", err.response?.data?.message); // Debugging: Log error response
         setError(err.response?.data?.message || "Something went wrong. Please try again.");
       })
       .finally(() => setLoading(false)); // Stop loading
