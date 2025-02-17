@@ -51,6 +51,10 @@ function UserList() {
     axios.put(`${API_BASE_URL}/user-api/update-bookmark/${currentBookmark._id}`, {
       title: currentBookmark.title,
       content: currentBookmark.content
+    }, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`  // Pass token for authorization
+      }
     })
     .then(() => {
       fetchBookmarks();
@@ -58,7 +62,7 @@ function UserList() {
     })
     .catch(err => console.log("Error updating bookmark:", err));
   };
-
+  
   // Handle Search
   useEffect(() => {
     let filtered = bookmarks.filter(bookmark =>
