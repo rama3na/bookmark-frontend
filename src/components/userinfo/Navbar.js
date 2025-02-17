@@ -24,7 +24,7 @@ function Navbar() {
   return (
     <nav className='navbar navbar-expand-lg navbar-dark bg-black'>
       <div className="container-fluid">
-        <button className="navbar-brand text-bold glow-on-hover " type="button" onClick={goHome}>
+        <button className="navbar-brand text-bold  " type="button" onClick={goHome}>
           📚 BookMark Manager
         </button>
         
