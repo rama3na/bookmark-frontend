@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { loginContext } from '../../contexts/loginContext';
 import { useForm } from 'react-hook-form';
-import "../allcss/Login.css"; // Import custom CSS
+import "../allcss/Login.css";  
 
 function Login() {
   let { loginUser, userLoginStatus, loginErr } = useContext(loginContext);

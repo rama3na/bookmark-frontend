@@ -12,7 +12,7 @@ function UserList() {
   let [currentBookmark, setCurrentBookmark] = useState({ _id: '', title: '', content: '' });
   let [searchTerm, setSearchTerm] = useState('');
 
-  // Fetch bookmarks
+  
   useEffect(() => {
     fetchBookmarks();
   }, []);
@@ -34,7 +34,7 @@ function UserList() {
     .catch(err => console.log("Error fetching bookmarks:", err));
   };
 
-  // Delete bookmark
+   
   const deleteBookmark = (id) => {
     const token = localStorage.getItem("token");
     if (!token) {
@@ -44,7 +44,7 @@ function UserList() {
 
     axios.delete(`${API_BASE_URL}/user-api/delete-bookmark/${id}`, {
       headers: {
-        Authorization: `Bearer ${token}`  // Add token here
+        Authorization: `Bearer ${token}`   
       }
     })
     .then(() => {
@@ -58,20 +58,20 @@ function UserList() {
     });
   };
 
-  // Open modal for editing
+   
   const openModal = (bookmark) => {
     setCurrentBookmark({ _id: bookmark._id, title: bookmark.title, content: bookmark.content });
     setShowModal(true);
   };
 
-  // Update bookmark
+   
   const updateBookmark = () => {
     axios.put(`${API_BASE_URL}/user-api/update-bookmark/${currentBookmark._id}`, {
       title: currentBookmark.title,
       content: currentBookmark.content
     }, {
       headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`  // Pass token for authorization
+        Authorization: `Bearer ${localStorage.getItem("token")}`   
       }
     })
     .then(() => {
@@ -81,7 +81,7 @@ function UserList() {
     .catch(err => console.log("Error updating bookmark:", err));
   };
 
-  // Handle Search
+  
   useEffect(() => {
     let filtered = bookmarks.filter(bookmark =>
       bookmark.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -96,7 +96,7 @@ function UserList() {
         <div className="userlist-box">
           <h2 className="title">🔖 Manage Your Bookmarks</h2>
 
-          {/* Search Bar */}
+           
           <div className="search-box">
             <input
               type="text"
@@ -107,7 +107,7 @@ function UserList() {
             />
           </div>
 
-          {/* Bookmarks List */}
+          
           <div className="user-cards">
             {filteredBookmarks.map((bookmark) => (
               <div key={bookmark._id} className="user-card">
@@ -121,7 +121,7 @@ function UserList() {
             ))}
           </div>
 
-          {/* Modal for updating bookmark */}
+          
           <Modal show={showModal} onHide={() => setShowModal(false)}>
             <Modal.Header closeButton>
               <Modal.Title>Update Bookmark</Modal.Title>

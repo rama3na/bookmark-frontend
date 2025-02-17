@@ -1,17 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../allcss/Home.css"; // Importing the external CSS file
+import "../allcss/Home.css";  
 
 function Home() {
   return (
     <div className="home-container">
-      {/* Header Section */}
+      
       <header className="home-header">
         <h1>📌 Bookmark Manager</h1>
         <p>Save, Organize, and Access Your Favorite Links Easily!</p>
       </header>
-
-      {/* About Section */}
+ 
       <section className="home-about">
         <h2>What is Bookmark Manager?</h2>
         <p>
@@ -20,8 +19,7 @@ function Home() {
           important websites again—everything is organized in one place!  
         </p>
       </section>
-
-      {/* Features Section */}
+ 
       <section className="home-features">
         <h2>🔹 Key Features</h2>
         <div className="features-grid">
@@ -43,11 +41,10 @@ function Home() {
           </div>
         </div>
       </section>
-
-      {/* Call-to-Action Section */}
+ 
       <section className="home-cta">
         <p>Start organizing your bookmarks today!</p>
-        <Link to="/adduser" className="cta-button">Get Started 🚀</Link>
+        
       </section>
     </div>
   );

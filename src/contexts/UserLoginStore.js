@@ -7,13 +7,13 @@ function UserLoginStore({ children }) {
   const [loginErr, setLoginErr] = useState("");
   const [userLoginStatus, setUserLoginStatus] = useState(false);
 
-  // Load user login state from local storage when app starts
+   
   useEffect(() => {
     const token = localStorage.getItem("token");
     const userData = localStorage.getItem("user");
 
     if (token && userData) {
-      // Verify token with backend
+       
       axios.get(`${process.env.REACT_APP_BACKEND_URL}/auth-api/verify-token`, {
         headers: { Authorization: `Bearer ${token}` }
       })
@@ -22,12 +22,12 @@ function UserLoginStore({ children }) {
         setCurrentUser(JSON.parse(userData));
       })
       .catch(() => {
-        logoutUser(); // Auto-logout if token is invalid
+        logoutUser();  
       });
     }
   }, []);
 
-  // Function to handle user login
+   
   const loginUser = (userCredObj) => {
     axios.post(`${process.env.REACT_APP_BACKEND_URL}/auth-api/login`, userCredObj)
       .then((response) => {
@@ -53,7 +53,7 @@ function UserLoginStore({ children }) {
       });
   };
 
-  // Function to handle user logout
+   
   const logoutUser = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
