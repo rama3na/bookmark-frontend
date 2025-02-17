@@ -1,0 +1,78 @@
+/* Full-page background */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+  }
+  
+  /* Card Styling */
+  .register-card {
+    width: 350px;
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    text-align: center;
+  }
+  
+  /* Title */
+  .register-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #333;
+  }
+  
+  /* Input Fields */
+  .input-field {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 14px;
+  }
+  
+  /* Error Messages */
+  .error-text {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  
+  /* Register Button */
+  .register-btn {
+    width: 100%;
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .register-btn:hover {
+    background: #5a67d8;
+  }
+  
+  /* Login Link */
+  .login-link {
+    margin-top: 12px;
+    font-size: 14px;
+  }
+  
+  .login-link span {
+    color: #667eea;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .login-link span:hover {
+    text-decoration: underline;
+  }
+  

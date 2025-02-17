@@ -1,0 +1,100 @@
+/* General Styles */
+.home-container {
+    text-align: center;
+    font-family: "Arial", sans-serif;
+    padding: 50px 20px;
+    background: linear-gradient(135deg, #6a11cb, #2575fc);
+    color: white;
+    min-height: 100vh;
+  }
+  
+  /* Header Styles */
+  .home-header {
+    margin-bottom: 40px;
+  }
+  
+  .home-header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    animation: fadeIn 1s ease-in-out;
+  }
+  
+  .home-header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+  }
+  
+  /* About Section */
+  .home-about {
+    margin-bottom: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+  }
+  
+  /* Features Section */
+  .home-features {
+    margin-bottom: 40px;
+  }
+  
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .feature-box {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .feature-box h3 {
+    font-size: 1.5rem;
+  }
+  
+  .feature-box p {
+    font-size: 1rem;
+  }
+  
+  /* Hover Effect */
+  .feature-box:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Call-to-Action */
+  .home-cta {
+    margin-top: 40px;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    background: #ffcc00;
+    color: black;
+    padding: 12px 25px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background 0.3s ease-in-out, transform 0.2s;
+  }
+  
+  .cta-button:hover {
+    background: #ffdb4d;
+    transform: scale(1.1);
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
